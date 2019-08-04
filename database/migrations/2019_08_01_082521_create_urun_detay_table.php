@@ -30,7 +30,7 @@ class CreateUrunDetayTable extends Migration
 
         
 
-            $table->foreign('urun_id')->references('id')->on('urun')->onDelete('cascade');
+            $table->foreign('urun_id')->references('id')->on('uruns')->onDelete('cascade');
         });
     }
 

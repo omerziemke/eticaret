@@ -16,4 +16,7 @@ class KullaniciController extends Controller
 
     	return view('kullanici.kaydol');
     }
+
+
+   
 }

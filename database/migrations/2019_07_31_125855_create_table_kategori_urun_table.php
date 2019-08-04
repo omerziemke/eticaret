@@ -18,7 +18,7 @@ class CreateTableKategoriUrunTable extends Migration
             $table->integer('kategori_id')->unsigned();
             $table->integer('urun_id')->unsigned();
             
-            $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade');
+            $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
             $table->foreign('urun_id')->references('id')->on('uruns')->onDelete('cascade');
         });
     }

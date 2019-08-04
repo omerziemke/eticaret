@@ -1,6 +1,6 @@
 @extends('kullanici.template')
 
-@section('title','Anasayfa')
+@section('title','Sepet')
 
 @section('content')
 
@@ -10,19 +10,17 @@
   
      
  
-    <div class="header-services">
-      <div class="ps-services owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="false" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
-        <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
-        <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
-        <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
-      </div>
-    </div>
+   
+    
     <main class="ps-main">
       <div class="ps-content pt-80 pb-80">
         <div class="ps-container">
           <div class="ps-cart-listing">
             <table class="table ps-cart__table">
               <thead>
+                @include('kullanici.partials.alert')
+
+                @if(count(Cart::content())>0)
                 <tr>
                   <th>All Products</th>
                   <th>Price</th>
@@ -32,69 +30,52 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach(Cart::content() as $urun)
                 <tr>
-                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> air jordan One mid</a></td>
-                  <td>$150</td>
+                  
+                  <td><a class="ps-product__preview" href="{{route('kullanici.urundetay',$urun->id)}}"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> {{$urun->name}}</a> <br>
+                      <form action="{{route('sepet.kaldir',$urun->rowId)}}" method="post">
+                            {{csrf_field()}}
+                            {{method_field('DELETE')}}
+                            <input type="submit" class="btn btn-danger btn-xs" value="Sepetten Kaldır">
+                        </form>
+                  </td>
+                  <td>${{$urun->price}}</td>
                   <td>
                     <div class="form-group--number">
-                      <button class="minus"><span>-</span></button>
-                      <input class="form-control" type="text" value="2">
+                      <button class="minus urun-adet-azalt" data-id="{{$urun->rowId}}" data-adet="{{$urun->qty-1}}"><span>-</span></button>
+                      <input class="form-control" type="text" value="{{$urun->qty}}">
                       <button class="plus"><span>+</span></button>
                     </div>
                   </td>
-                  <td>$300</td>
+                  <td>${{$urun->subtotal}}</td>
                   <td>
-                    <div class="ps-remove"></div>
+                  
                   </td>
                 </tr>
-                <tr>
-                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/2.jpg" alt=""> The Crusty Croissant</a></td>
-                  <td>$150</td>
-                  <td>
-                    <div class="form-group--number">
-                      <button class="minus"><span>-</span></button>
-                      <input class="form-control" type="text" value="2">
-                      <button class="plus"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>$300</td>
-                  <td>
-                    <div class="ps-remove"></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/3.jpg" alt="">The Rolling Pin</a></td>
-                  <td>$150</td>
-                  <td>
-                    <div class="form-group--number">
-                      <button class="minus"><span>-</span></button>
-                      <input class="form-control" type="text" value="2">
-                      <button class="plus"><span>+</span></button>
-                    </div>
-                  </td>
-                  <td>$300</td>
-                  <td>
-                    <div class="ps-remove"></div>
-                  </td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
             <div class="ps-cart__actions">
               <div class="ps-cart__promotion">
+                
                 <div class="form-group">
-                  <div class="ps-form--icon"><i class="fa fa-angle-right"></i>
-                    <input class="form-control" type="text" placeholder="Promo Code">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button class="ps-btn ps-btn--gray">Continue Shopping</button>
+                  <form action="{{route('kullanici.anasayfa')}}" method="get">
+                            {{csrf_field()}}
+                            <button class="ps-btn ps-btn--gray">Alış Verişe Devam Et</button>
+                        </form>
+                 
                 </div>
               </div>
               <div class="ps-cart__total">
-                <h3>Total Price: <span> 2599.00 $</span></h3><a class="ps-btn" href="checkout.html">Process to checkout<i class="ps-icon-next"></i></a>
+                <h3>Total Price: <span> {{Cart::subtotal()}} $</span></h3>  <h3>KDV: <span> {{Cart::tax()}} $</span></h3> <h3>KDV'li Tutar: <span> {{Cart::total()}} $</span></h3><a class="ps-btn" href="checkout.html">Process to checkout<i class="ps-icon-next"></i></a>
               </div>
             </div>
           </div>
+            @else
+                <p>Sepetinizde ürün yok!!!</p>
+
+            @endif
         </div>
       </div>
       <div class="ps-subscribe">
@@ -119,5 +100,29 @@
      
     </main>
 
-    <!-- JS Library-->
+    <script>
+      
+    $(function(){
+      $('.urun-adet-azalt,.urun-adet-artir').on('click',function(){
+
+       var id=$(this).attr('data-id');
+       var adet=$(this).attr('data-adet');
+       $.ajax({
+        type:'patch', 
+        url:'{{url('sepet/güncelle')}}/'+id,
+        data:{adet:adet},
+        success:function(result){
+          window.location.href='/sepet';
+        }
+
+
+
+       });
+
+      });
+
+
+    });
+
+    </script>
     @endsection

@@ -44,27 +44,27 @@
               <li class="current"><a href="#" data-filter="*">All <sup>8</sup></a></li>
               <li><a href="#" data-filter=".nike">Nike <sup>1</sup></a></li>
               <li><a href="#" data-filter=".adidas">Adidas <sup>1</sup></a></li>
-              <li><a href="#" data-filter=".men">Men <sup>1</sup></a></li>
-              <li><a href="#" data-filter=".women">Women <sup>1</sup></a></li>
-              <li><a href="#" data-filter=".kids">Kids <sup>4</sup></a></li>
+              <li><a href="#" data-filter=".men">Erkek <sup>1</sup></a></li>
+              <li><a href="#" data-filter=".women">Kadın <sup>1</sup></a></li>
+              <li><a href="#" data-filter=".kids">Çocuk <sup>4</sup></a></li>
             </ul>
           </div>
           
 
           
-        
-          <div class="ps-section__content pb-50">
-               @foreach($urunler as $urun)
-            <div class="masonry-wrapper" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
-              <div class="ps-masonry">
-                <div class="grid-sizer"></div>
-                <div class="grid-item kids">
-                  <div class="grid-item__content-wrapper">
+          
+           <div id="ana_div">
+             @foreach($urunler as $urun)
+          <div class="ps-section__content pb-50 div">
+            <div class="masonry-wrapper div" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="100%">
+              <div class="ps-masonry div">
+                <div class="grid-sizer div"></div>
+                <div class="grid-item kids div">
+                  <div class="grid-item__content-wrapper div">
                     <div class="ps-shoe mb-30">
                       <div class="ps-shoe__thumbnail">
                         <div class="ps-badge"><span>New</span></div>
-
-                        <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="product-detail.html"></a>
+                        <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="images/shoe/1.jpg" alt=""><a class="ps-shoe__overlay" href="{{route('kullanici.urundetay',$urun->id)}}"></a>
                       </div>
                     
                       <div class="ps-shoe__content">
@@ -76,27 +76,22 @@
                         </div>
                         <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{$urun->urun_adi}}</a>
                           <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">
-                            <del>£220</del> £ {{$urun->fiyati}}</span>
+                            <del>£{{$urun->indirimli_fiyati}}</del> £ {{$urun->fiyati}}</span>
                         </div>
-                      </div>
-                       
-                     
+                      </div> 
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-             @endforeach
           </div>
-         
-          
+          @endforeach
+         </div>
           
         </div>
       </div>
-      <div class="ps-section--offer">
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{asset('images/banner/home-banner-1.png')}}"></a></div>
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{asset('images/banner/home-banner-2.png')}}"></a></div>
-      </div>
+
+   
       <div class="ps-section--sale-off ps-section pt-80 pb-40">
         <div class="ps-container">
           <div class="ps-section__header mb-50">
@@ -286,7 +281,7 @@
           </div>
         </div>
       </div>
-      <div class="ps-home-testimonial bg--parallax pb-80" data-background="images/background/parallax.jpg">
+      <div class="ps-home-testimonial bg--parallax pb-80" data-background="{{asset('images/background/parallax.jpg')}}">
         <div class="container">
           <div class="owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on" data-owl-animate-in="fadeIn" data-owl-animate-out="fadeOut">
             <div class="ps-testimonial">
@@ -305,8 +300,8 @@
                 <p>“Dessert pudding dessert jelly beans cupcake sweet caramels gingerbread. Fruitcake biscuit cheesecake. Cookie topping sweet muffin pudding tart bear claw sugar plum croissant. “</p>
               </footer>
             </div>
-            <div class="ps-testimonial">
-              <div class="ps-testimonial__thumbnail"><img src="images/testimonial/2.jpg" alt=""><i class="fa fa-quote-left"></i></div>
+            <div class="ps-testimonial">images/testimonial/2.jpg
+              <div class="ps-testimonial__thumbnail"><img src="{{asset('images/testimonial/2.jpg')}}" alt=""><i class="fa fa-quote-left"></i></div>
               <header>
                 <select class="ps-rating">
                   <option value="1">1</option>

@@ -5,8 +5,8 @@
           </div>
           <div class="navigation__column center">
                 <ul class="main-menu menu">
-                 <li class="menu-item"><a href="{{route('kullanici.anasayfa')}}">Home</a></li>
-                  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Men</a>
+                 <li class="menu-item"><a href="{{route('kullanici.anasayfa')}}">Anasayfa</a></li>
+                  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Erkek</a>
                     <div class="mega-menu">
                       <div class="mega-wrap">
                         <div class="mega-column">
@@ -68,9 +68,9 @@
                       </div>
                     </div>
                   </li>
-                  <li class="menu-item"><a href="#">Women</a></li>
-                  <li class="menu-item"><a href="#">Kids</a></li>
-                  <li class="menu-item menu-item-has-children dropdown"><a href="#">News</a>
+                  <li class="menu-item"><a href="#">Kadın</a></li>
+                  <li class="menu-item"><a href="#">Çocuk</a></li>
+                  <li class="menu-item menu-item-has-children dropdown"><a href="#">Yeni</a>
                         <ul class="sub-menu">
                           <li class="menu-item menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>
                                 <ul class="sub-menu">
@@ -90,15 +90,16 @@
                 </ul>
           </div>
           <div class="navigation__column right">
-            <form class="ps-search--header" action="do_action" method="post">
-              <input class="form-control" type="text" placeholder="Search Product…">
+            <form class="ps-search--header" action="{{route('urun_arama')}}" method="get">
+              {{csrf_field()}}
+              <input class="form-control" type="text" name="aranan" placeholder="Ürün a.." value="{{old('aranan')}}">
               <button><i class="ps-icon-search"></i></button>
             </form>
             <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>20</i></span><i class="ps-icon-shopping-cart"></i></a>
               <div class="ps-cart__listing">
-                <div class="ps-cart__content">images/cart-preview/1.jpg
+                <div class="ps-cart__content">
                   <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"><img src="{{asset('images/cart-preview/1.jpg')}}" alt=""></a></div>
+                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"><img src="{{asset('images/cart-preview/1.jpg')}}" alt=""></a></div> 
                     <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">Amazin’ Glazin’</a>
                       <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
                     </div>

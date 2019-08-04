@@ -9,11 +9,22 @@ use App\Models\Urun;
 
 class UrunController extends Controller
 {
-     public function index(){
+     public function index($id){
+        $urunler=Urun::all();
+        $urundetay=Urun::find($id);
 
-     	$urun=Urun::find(1);
-     	dd($urun);
-
-    	return view('kullanici.urundetay');
+    	return view('kullanici.urundetay',compact('urunler','urundetay'));
     }
+
+      public function arama(){
+       
+     
+       $aranan=request()->input('aranan');
+
+       $urunler=Urun::where('urun_adi','like',"%$aranan%")
+       ->orWhere('aciklama','like','%$aranan%') ->paginate(8);
+       
+        request()->flash();
+       return view('kullanici.arama',compact('urunler'));
+     }
 }
