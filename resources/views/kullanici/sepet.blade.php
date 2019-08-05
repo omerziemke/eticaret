@@ -43,7 +43,7 @@
                   <td>${{$urun->price}}</td>
                   <td>
                     <div class="form-group--number">
-                      <button class="minus urun-adet-azalt" data-id="{{$urun->rowId}}" data-adet="{{$urun->qty-1}}"><span>-</span></button>
+                     <a href="{{route('urun.guncelle',$urun->rowId)}}"> <button class="minus" ><span>-</span></button></a>
                       <input class="form-control" type="text" value="{{$urun->qty}}">
                       <button class="plus"><span>+</span></button>
                     </div>
@@ -103,14 +103,14 @@
     <script>
       
     $(function(){
-      $('.urun-adet-azalt,.urun-adet-artir').on('click',function(){
-
+      $('div.urun-adet-azalt,div.urun-adet-artir').('click',function(){
+         
        var id=$(this).attr('data-id');
        var adet=$(this).attr('data-adet');
        $.ajax({
-        type:'patch', 
+        type:'PATCH', 
         url:'{{url('sepet/güncelle')}}/'+id,
-        data:{adet:adet},
+        data: {adet:adet},
         success:function(result){
           window.location.href='/sepet';
         }

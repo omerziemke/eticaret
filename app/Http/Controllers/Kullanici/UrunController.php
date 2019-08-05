@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Kullanici;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Urun;
-
+use App\Models\Sepet_Urun;
+use App\Models\Sepet;
+use Validator;
 
 class UrunController extends Controller
 {
@@ -27,4 +29,18 @@ class UrunController extends Controller
         request()->flash();
        return view('kullanici.arama',compact('urunler'));
      }
+
+
+     public function benzer_urunler(){
+
+      return view('kullanici.benzer_urunler');
+     }
+
+
+     public function guncelle($rowid){
+       
+      $a=Sepet::find($rowid);
+        dd($a);
+       Cart::update();
+        }
 }

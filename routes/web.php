@@ -15,8 +15,8 @@
 Route::get('/','Kullanici\AnasayfaController@anasayfa')->name('kullanici.anasayfa');
 Route::get('kullanici/yenisezon','Kullanici\AnasayfaController@index')->name('kullanici.yenisezon');
 Route::get('kullanici/urundetay/{id}','Kullanici\UrunController@index')->name('kullanici.urundetay');
-
-
+Route::get('benzer/urunler','Kullanici\UrunController@benzer_urunler')->name('benzer.urunler');
+Route::get('urun/guncelle/{rowid}','Kullanici\UrunController@guncelle')->name('urun.guncelle');
 Route::get('kullanici/odeme','Kullanici\OdemeController@index')->name('kullanici.odeme');
 Route::get('kullanici/hakkimizda','Kullanici\AnasayfaController@hakkimizda')->name('kullanici.hakkimizda');
 

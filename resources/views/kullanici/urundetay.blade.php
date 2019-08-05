@@ -49,6 +49,7 @@
                     <option value="2">5</option>
                   </select><a href="#">(Read all 8 reviews)</a>
                 </div>
+
                 <h1>Air strong  training</h1>
                 <p class="ps-product__category"><a href="#"> Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p>
                 <h3 class="ps-product__price">£ {{$urundetay->indirimli_fiyati}} <del>£ {{$urundetay->fiyati}}</del></h3>
@@ -87,7 +88,7 @@
                   </div>
                 </div>
                 <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{route('sepet.ekle',$urundetay->id)}}">Sepete Ekle<i class="ps-icon-next"></i></a>
-                  <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
+                  <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="{{route('benzer.urunler')}}"><i class="ps-icon-share"></i></a></div>
                 </div>
               </div>
               <div class="clearfix"></div>
