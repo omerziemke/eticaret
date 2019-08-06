@@ -23,7 +23,8 @@ class UrunTableSeeder extends Seeder
             'slug'=>str_slug($urun_adi),
             'aciklama'=>$faker->sentence(20),
             'fiyati'=>$faker->randomFloat(3,1,20),
-            'indirimli_fiyati'=>$faker->randomFloat(3,1,20)
+            'indirimli_fiyati'=>$faker->randomFloat(3,1,20),
+            'yildiz_sayisi'=>rand(0,5)
             ]);
 
             $detay=$urun->detay()->create([

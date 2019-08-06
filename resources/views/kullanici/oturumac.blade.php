@@ -5,13 +5,13 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2 oturum-mt">
                 <div class="panel panel-default">
                     <div class="panel-heading">Oturum Aç</div>
                     <div class="panel-body">
                         
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{route('kullanici.oturumac')}}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{route('kullanici.giris')}}">
                             {{csrf_field()}}
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">Email</label>
@@ -42,7 +42,9 @@
                                     <button type="submit" class="btn btn-primary">
                                         Giriş yap
                                     </button>
-
+                                    <a href="{{route('kullanici.kaydol')}}"><button type="button" class="btn btn-primary">
+                                        Kaydol
+                                    </button></a>
                                   {{--   <a class="btn btn-link" href="{{ route('kullanici.sifre_form') }}">
                                         Şifremi Unuttum
                                     </a>--}}

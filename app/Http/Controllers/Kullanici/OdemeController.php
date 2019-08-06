@@ -11,4 +11,9 @@ class OdemeController extends Controller
 
     	return view('kullanici.odeme');
     }
+
+    public function odeme(){
+
+;
+    }
 }

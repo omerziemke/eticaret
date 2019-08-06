@@ -15,12 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('adsoyad')->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->rememberToken()->nullable();
-            $table->timestamps();
+            $table->string('sifre');
+            $table->string('aktivasyon_anahtari',60)->nullable();
+            $table->boolean('aktif_mi')->default(0);
+             $table->timestamp('olusturulma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('güncelleme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
+            //$table->softDeletes();
+            $table->timestamp('silinme_tarihi')->nullable();
         });
     }
 

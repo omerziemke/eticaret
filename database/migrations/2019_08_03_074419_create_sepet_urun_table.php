@@ -18,7 +18,7 @@ class CreateSepetUrunTable extends Migration
             $table->integer('urun_id')->unsigned();
             $table->integer('adet');
             $table->decimal('fiyati',10,3);
-            $table->decimal('indirimli_fiyati',10,3);
+            $table->decimal('indirimli_fiyati',10,3)->nullable();
             $table->string('durum',30);
             $table->timestamp('olusturulma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('güncelleme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));

@@ -4,7 +4,6 @@
  * application frontend using useful Laravel and JavaScript libraries.
  */
 
-require('./bootstrap');
 
 setTimeout(function(){
 	$('.alert').slideUp(500);
@@ -16,3 +15,7 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
+
+  

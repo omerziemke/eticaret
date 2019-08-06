@@ -37,10 +37,5 @@ class UrunController extends Controller
      }
 
 
-     public function guncelle($rowid){
-       
-      $a=Sepet::find($rowid);
-        dd($a);
-       Cart::update();
-        }
+     
 }

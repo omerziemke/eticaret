@@ -33,24 +33,21 @@
                 @foreach(Cart::content() as $urun)
                 <tr>
                   
-                  <td><a class="ps-product__preview" href="{{route('kullanici.urundetay',$urun->id)}}"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> {{$urun->name}}</a> <br>
-                      <form action="{{route('sepet.kaldir',$urun->rowId)}}" method="post">
-                            {{csrf_field()}}
-                            {{method_field('DELETE')}}
-                            <input type="submit" class="btn btn-danger btn-xs" value="Sepetten Kaldır">
-                        </form>
+                  <td><a class="ps-product__preview" href="{{route('kullanici.urundetay',$urun->id)}}"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> {{$urun->name}}</a> 
+                      
                   </td>
                   <td>${{$urun->price}}</td>
+
                   <td>
                     <div class="form-group--number">
-                     <a href="{{route('urun.guncelle',$urun->rowId)}}"> <button class="minus" ><span>-</span></button></a>
-                      <input class="form-control" type="text" value="{{$urun->qty}}">
-                      <button class="plus"><span>+</span></button>
+                      <button class="minus urun-adet-azalt" data-id="{{$urun->rowId}}" data-adet="{{$urun->qty-1}}">-</button>
+                      <input class="form-control "   type="text" value="{{$urun->qty}}">
+                      <button class="plus urun-adet-artir" data-id="{{$urun->rowId}}"  data-adet="{{$urun->qty+1}}">+</button>
                     </div>
                   </td>
                   <td>${{$urun->subtotal}}</td>
                   <td>
-                  
+                     <div class="ps-remove urun-kaldir" data-id="{{$urun->rowId}}"></div>
                   </td>
                 </tr>
                 @endforeach
@@ -68,12 +65,12 @@
                 </div>
               </div>
               <div class="ps-cart__total">
-                <h3>Total Price: <span> {{Cart::subtotal()}} $</span></h3>  <h3>KDV: <span> {{Cart::tax()}} $</span></h3> <h3>KDV'li Tutar: <span> {{Cart::total()}} $</span></h3><a class="ps-btn" href="checkout.html">Process to checkout<i class="ps-icon-next"></i></a>
+                <h3>Total Price: <span> {{Cart::subtotal()}} $</span></h3>  <h3>KDV: <span> {{Cart::tax()}} $</span></h3> <h3>KDV'li Tutar: <span> {{Cart::total()}} $</span></h3><a class="ps-btn" href="{{route('odeme.yap')}}">Ödeme Yap<i class="ps-icon-next"></i></a>
               </div>
             </div>
           </div>
             @else
-                <p>Sepetinizde ürün yok!!!</p>
+                <h3 align="center">Sepetinizde ürün yok!!!</h3>
 
             @endif
         </div>
@@ -99,19 +96,41 @@
      
      
     </main>
-
+<script type="text/javascript" src="{{ URL::asset('plugins/jquery/dist/jquery.min.js') }}"></script>
     <script>
       
     $(function(){
-      $('div.urun-adet-azalt,div.urun-adet-artir').('click',function(){
-         
+      $('.urun-adet-azalt, .urun-adet-artir').on('click',function(){
        var id=$(this).attr('data-id');
        var adet=$(this).attr('data-adet');
        $.ajax({
         type:'PATCH', 
-        url:'{{url('sepet/güncelle')}}/'+id,
-        data: {adet:adet},
+        url:'/sepet/guncelle/'+id,
+        data:{adet:adet},
         success:function(result){
+          console.log(result);
+          window.location.href='/sepet';
+        }
+
+
+
+       });
+
+      });
+
+
+    });
+
+
+      $(function(){
+      $('.urun-kaldir').on('click',function(){
+       var id=$(this).attr('data-id');
+       console.log(id);
+       $.ajax({
+        type:'PATCH', 
+        url:'/sepet/kaldir/'+id,
+        success:function(result){
+          console.log(result);
           window.location.href='/sepet';
         }
 

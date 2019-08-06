@@ -1,145 +1,107 @@
 @extends('kullanici.template')
 
-@section('title','Anasayfa')
+@section('title','Ödeme')
 
 @section('content')
 
-
-    <main class="ps-main">
-      <div class="ps-checkout pt-80 pb-80">
-        <div class="ps-container">
-          <form class="ps-checkout__form" action="do_action" method="post">
+    <div class="container">
+        <div class="bg-content">
+            <h2>Ödeme</h2>
+            <form action="#" method="post">
+            {{csrf_field()}}
             <div class="row">
-                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
-                    <div class="ps-checkout__billing">
-                      <h3>Billing Detail</h3>
-                            <div class="form-group form-group--inline">
-                              <label>First Name<span>*</span>
-                              </label>
-                              <input class="form-control" type="text">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label>Last Name<span>*</span>
-                              </label>
-                              <input class="form-control" type="text">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label>Company Name<span>*</span>
-                              </label>
-                              <input class="form-control" type="text">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label>Email Address<span>*</span>
-                              </label>
-                              <input class="form-control" type="email">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label>Company Name<span>*</span>
-                              </label>
-                              <input class="form-control" type="text">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label>Phone<span>*</span>
-                              </label>
-                              <input class="form-control" type="text">
-                            </div>
-                            <div class="form-group form-group--inline">
-                              <label>Address<span>*</span>
-                              </label>
-                              <input class="form-control" type="text">
-                            </div>
-                      <div class="form-group">
-                        <div class="ps-checkbox">
-                          <input class="form-control" type="checkbox" id="cb01">
-                          <label for="cb01">Create an account?</label>
-                        </div>
-                      </div>
-                      <h3 class="mt-40"> Addition information</h3>
-                      <div class="form-group form-group--inline textarea">
-                        <label>Order Notes</label>
-                        <textarea class="form-control" rows="5" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                      </div>
+                <div class="col-md-5">
+                    <h3>Ödeme Bilgileri</h3>
+                    <div class="form-group">
+                        <label for="kart_numarasi">Kredi Kartı Numarası</label>
+                        <input type="text" class="form-control kredikarti" id="kart_numarasi" name="kart_numarasi" style="font-size:20px;" required>
                     </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                    <div class="ps-checkout__order">
-                      <header>
-                        <h3>Your Order</h3>
-                      </header>
-                      <div class="content">
-                        <table class="table ps-checkout__products">
-                          <thead>
-                            <tr>
-                              <th class="text-uppercase">Product</th>
-                              <th class="text-uppercase">Total</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>HABITANT x1</td>
-                              <td>$300.00</td>
-                            </tr>
-                            <tr>
-                              <td>Card Subtitle</td>
-                              <td>$300.00</td>
-                            </tr>
-                            <tr>
-                              <td>Order Total</td>
-                              <td>$300.00</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <footer>
-                        <h3>Payment Method</h3>
-                        <div class="form-group cheque">
-                          <div class="ps-radio">
-                            <input class="form-control" type="radio" id="rdo01" name="payment" checked>
-                            <label for="rdo01">Cheque Payment</label>
-                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                          </div>
+                    <div class="form-group">
+                        <label for="son_kullanma_tarihi_ay">Son Kullanma Tarihi</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Ay
+                                <select name="son_kullanma_tarihi_ay" id="son_kullanma_tarihi_ay" class="form-control" required>
+                                    <option>1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                Yıl
+                                <select id="son_kullanma_tarihi_yil" name="son_kullanma_tarihi_yil" class="form-control" required>
+                                    <option>2017</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group paypal">
-                          <div class="ps-radio ps-radio--inline">
-                            <input class="form-control" type="radio" name="payment" id="rdo02">
-                            <label for="rdo02">Paypal</label>
-                          </div>
-                          <ul class="ps-payment-method">
-                            <li><a href="#"><img src="images/payment/1.png" alt=""></a></li>
-                            <li><a href="#"><img src="images/payment/2.png" alt=""></a></li>
-                            <li><a href="#"><img src="images/payment/3.png" alt=""></a></li>
-                          </ul>
-                          <button class="ps-btn ps-btn--fullwidth">Place Order<i class="ps-icon-next"></i></button>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardcvv2">CVV (Güvenlik Numarası)</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control kredikarti_cvv" name="cardcvv2" id="cardcvv2" required>
+                            </div>
                         </div>
-                      </footer>
                     </div>
-                    <div class="ps-shipping">
-                      <h3>FREE SHIPPING</h3>
-                      <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
-                    </div>
-                  </div>
+                    <form>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input type="checkbox" checked> Ön bilgilendirme formunu okudum ve kabul ediyorum.</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input type="checkbox" checked> Mesafeli satış sözleşmesini okudum ve kabul ediyorum.</label>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-success btn-lg">Ödeme Yap</button>
+                </div>
+                <div class="col-md-7">
+                    <h4>Ödenecek Tutar</h4>
+                    <span class="price">{{Cart::total()}} <small>TL</small></span>
+
+                   <h4>İletişim ve Fatura Bilgileri</h4>
+                   <div class="row">
+                       <div class="col-md-4">
+                           <div class="form-group">
+                               <label for="adsoyad">Ad Soyad</label>
+                               <input type="text" class="form-control" name="adsoyad"  id="adsoyad" required>
+                           </div>
+                       </div>
+                       <div class="col-md-8">
+                             <div class="form-group">
+                               <label for="adress">Adres</label>
+                               <input type="text" class="form-control" name="adress"  id="adress" required>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="row">
+                       <div class="col-md-4">
+                           <div class="form-group">
+                               <label for="telefon">Telefon</label>
+                               <input type="text" class="form-control" name="telefon"  id="telefon" required>
+                           </div>
+                       </div>
+                       <div class="col-md-8">
+                             <div class="form-group">
+                               <label for="ceptelefonu">Cep Telefonu</label>
+                               <input type="text" class="form-control telefon" name="ceptelefonu" " id="ceptelefonu" required>
+                           </div>
+                       </div>
+                   </div>
+                </div>
             </div>
-          </form>
+            </form>
         </div>
-      </div>
-      <div class="ps-subscribe">
-        <div class="ps-container">
-          <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
-                  <h3><i class="fa fa-envelope"></i>Sign up to Newsletter</h3>
-                </div>
-                <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12 ">
-                  <form class="ps-subscribe__form" action="do_action" method="post">
-                    <input class="form-control" type="text" placeholder="">
-                    <button>Sign up now</button>
-                  </form>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 ">
-                  <p>...and receive  <span>$20</span>  coupon for first shopping.</p>
-                </div>
-          </div>
-        </div>
-      </div>
-     
-    </main>
+    </div>
+@endsection
+
+@section('footer')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
+    <script>
+        $('.kredikarti').mask('0000-0000-0000-0000', { placeholder: "____-____-____-____" });
+        $('.kredikarti_cvv').mask('000', { placeholder: "___" });
+        $('.telefon').mask('(000) 000-00-00', { placeholder: "(___) ___-__-__" });
+    </script>
+
 @endsection
