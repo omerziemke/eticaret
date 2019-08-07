@@ -51,7 +51,7 @@
           </div>
           
 
-          
+          @include('kullanici.partials.alert')
           
            <div id="ana_div">
              @foreach($urunler as $urun)

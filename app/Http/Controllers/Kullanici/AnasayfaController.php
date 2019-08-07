@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Kullanici;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Urun;
+use App\Models\UrunDetay;
 class AnasayfaController extends Controller
 {
 
 
     public function index(){
-      
+         $urunler=UrunDetay::all();
     	return view('kullanici.yenisezon');
     }
 

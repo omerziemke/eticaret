@@ -38,5 +38,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-   
+     public function getAuthPassword()
+    {
+        return $this->sifre;
+        
+    }
+
+      /*public function detay()
+     {
+        return $this->hasOne('App\Models\KullaniciDetay')->withDefault();
+     }*/
 }

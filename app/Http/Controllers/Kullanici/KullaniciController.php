@@ -18,12 +18,7 @@ class KullaniciController extends Controller
     	 return view('kullanici.oturumac');
     }
 
-     public function giris(){
-
-    	   return redirect()->route('kullanici.anasayfa');
-
-    }
-
+    
     public function kaydol_form(){
 
     	return view('kullanici.kaydol');
@@ -60,16 +55,39 @@ class KullaniciController extends Controller
 
      public function aktiflestir(string $anahtar)
       { 
-          $kullanici=Kullanici::where('aktivasyon_anahtari',$anahtar)->first();
-          if(!is_null($kullanici))
+          $users=User::where('aktivasyon_anahtari',$anahtar)->first();
+          if(!is_null($users))
           {   
-            $kullanici->aktivasyon_anahtari=null;
-            $kullanici->aktif_mi=1;
-            $kullanici->save();
+            $users->aktivasyon_anahtari=null;
+            $users->aktif_mi=1;
+            $users->save();
               return redirect()->to('/')->with('mesaj','Kullanici kaydınız aktifleştirildi...')->with('mesaj_tur','success');
           }else{
              return redirect()->to('/')->with('mesaj','Kullanici kaydınız aktifleştirilemedi...')->with('mesaj_tur','warning');
           }
       }
-   
+
+      public function giris()
+      {     
+
+          $this->validate(request(),[
+                'email'=>'required|email',
+                'sifre'=>'required'
+          ]);
+             $credentials=[
+              'email'=>request('email'),
+              'password'=>request('sifre')
+             
+             ];
+               
+            if(auth()->attempt($credentials, request()->has('benihatirla')))
+            {
+                
+                  return  redirect()->intended('/');//giriş yapmadan herhangi bir sayfaya gitmek isterse dogrudan oturum ac sayfasına yonlendiriyor giriş yapıncada istedigisayfaya otamatik gidiyor (intended )ile
+            }else{
+                
+              $errors=['email'=>'hatali giriş'];
+              return back()->withErrors($errors);
+            }
+   }
 }
