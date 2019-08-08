@@ -7,27 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Urun extends Model
 {
      use SoftDeletes;
-    protected $table='uruns';
+    protected $table='products';
     protected $guarded=[];
-
-
-    const CREATED_AT = 'olusturulma_tarihi';
-    const UPDATED_AT ='güncelleme_tarihi';
-    const DELETED_AT ='silinme_tarihi';
-
-
-
-     public function kategoriler()
-    {
-    	return $this->belongsToMany('App\Models\Kategori','kategori_urun');
-    }
-
-
-
-    public function detay()
-     {
-        return $this->hasOne('App\Models\UrunDetay')->withDefault();
-     }
 
 
 }
