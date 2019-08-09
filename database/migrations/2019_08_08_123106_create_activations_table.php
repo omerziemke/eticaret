@@ -20,6 +20,8 @@ class CreateActivationsTable extends Migration
             $table->boolean('completed')->default(0);
             $table->dateTime('completed_at')->nullable();
             $table->timestamps();
+
+            
         });
     }
 

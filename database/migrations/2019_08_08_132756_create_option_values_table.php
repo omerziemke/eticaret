@@ -20,6 +20,8 @@ class CreateOptionValuesTable extends Migration
             $table->string('price_type', 10);
             $table->integer('position')->unsigned();
             $table->timestamps();
+
+            $table->foreign('option_id')->references('id')->on('options')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

@@ -17,6 +17,9 @@ class CreateProductOptionsTable extends Migration
           $table->integer('product_id')->unsigned();
             $table->integer('option_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('option_id')->references('id')->on('options')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

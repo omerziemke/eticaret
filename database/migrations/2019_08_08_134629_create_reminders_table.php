@@ -21,6 +21,8 @@ class CreateRemindersTable extends Migration
             $table->dateTime('completed_at')->nullable();
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
+
         });
     }
 

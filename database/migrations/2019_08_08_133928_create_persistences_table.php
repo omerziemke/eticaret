@@ -18,6 +18,8 @@ class CreatePersistencesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('code')->unique();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

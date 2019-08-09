@@ -21,6 +21,8 @@ class CreateMetaDataTranslationsTable extends Migration
             $table->text('meta_keywords', 65535)->nullable();
             $table->text('meta_description', 65535)->nullable();
             $table->timestamps();
+
+            $table->foreign('meta_data_id')->references('id')->on('meta_data')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

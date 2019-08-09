@@ -19,6 +19,8 @@ class CreateTaxRateTranslationsTable extends Migration
             $table->string('locale');
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('tax_rate_id')->references('id')->on('tax_rates')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

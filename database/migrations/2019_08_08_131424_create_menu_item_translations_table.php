@@ -19,6 +19,8 @@ class CreateMenuItemTranslationsTable extends Migration
             $table->string('locale');
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('menu_item_id')->references('id')->on('menu_items')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

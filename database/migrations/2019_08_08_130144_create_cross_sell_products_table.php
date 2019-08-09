@@ -18,6 +18,9 @@ class CreateCrossSellProductsTable extends Migration
             $table->integer('cross_sell_product_id')->unsigned();
            
             $table->timestamps();
+
+            $table->foreign('cross_sell_product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

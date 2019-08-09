@@ -23,6 +23,8 @@ class CreateSliderSlideTranslationsTable extends Migration
             $table->string('caption_3', 191)->nullable();
             $table->string('call_to_action_text', 191)->nullable();
             $table->timestamps();
+
+            $table->foreign('slider_slide_id')->references('id')->on('slider_slides')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

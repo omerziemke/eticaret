@@ -18,6 +18,9 @@ class CreateOrderProductOptionValuesTable extends Migration
             $table->integer('option_value_id')->unsigned();
             $table->decimal('price', 18, 4)->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('option_value_id')->references('id')->on('option_values')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('order_product_option_id')->references('id')->on('order_product_options')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

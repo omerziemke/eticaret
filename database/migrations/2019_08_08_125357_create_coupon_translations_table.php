@@ -19,6 +19,8 @@ class CreateCouponTranslationsTable extends Migration
             $table->string('locale');
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

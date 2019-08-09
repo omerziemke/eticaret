@@ -11,23 +11,31 @@ class KategoriTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-         DB::table('kategoris')->truncate();
-       $id= DB::table('kategoris')->insertGetId(['kategori_adi'=>'ERKEK','slug'=>'erkek']);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Yeni Sezon','slug'=>'yeni-sezon','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Cok Satanlar','slug'=>'cok_satanlar','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Trendler','slug'=>'trendler','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Yaz Ayakkabıları','slug'=>'yaz-ayakkabilari','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Anneler Günü Koleksiyonu','slug'=>'anneler-günü-koleksiyonu','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Futbol','slug'=>'futbol','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Basketbol','slug'=>'baskebol','ust_id'=>$id]);
-            DB::table('kategoris')->insert(['kategori_adi'=>'Anneler Günü Koleksiyonu','slug'=>'anneler-günü-koleksiyonu','ust_id'=>$id]);
-       
+    {       DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            DB::table('main_categories')->truncate();
+            DB::table('categories')->truncate();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        DB::table('kategoris')->insert(['kategori_adi'=>'KADIN','slug'=>'kadin']);
-        DB::table('kategoris')->insert(['kategori_adi'=>'COCUK','slug'=>'cocuk']);
-        DB::table('kategoris')->insert(['kategori_adi'=>'YENİ','slug'=>'yeni']);
-       
+            
+            DB::table('main_categories')->insert(['main_category_name'=>'Ekek','slug'=>'erkek' ]);
+            DB::table('main_categories')->insert(['main_category_name'=>'Kadın','slug'=>'kadin']);
+            DB::table('main_categories')->insert(['main_category_name'=>'Cocuk','slug'=>'cocuk']);
+            DB::table('main_categories')->insert(['main_category_name'=>'Yeni','slug'=>'yeni']);
+
+
+
+            DB::table('categories')->insert(['category_name'=>'Yeni Sezon','slug'=>'yeni-sezon','main_category_id' =>1]);
+            DB::table('categories')->insert(['category_name'=>'Cok Satanlar','slug'=>'cok_satanlar','main_category_id'=>1]);
+            DB::table('categories')->insert(['category_name'=>'Trendler','slug'=>'trendler','main_category_id'=>1]);
+            DB::table('categories')->insert(['category_name'=>'Yaz Ayakkabıları','slug'=>'yaz-ayakkabilari','main_category_id'=>1]);
+            DB::table('categories')->insert(['category_name'=>'Anneler Günü Koleksiyonu','slug'=>'anneler-günü-koleksiyonu','main_category_id'=>1]);
+            DB::table('categories')->insert(['category_name'=>'Futbol','slug'=>'futbol','main_category_id'=>1]);
+            
+            
+
+    
+            
+          
     }
     
 }

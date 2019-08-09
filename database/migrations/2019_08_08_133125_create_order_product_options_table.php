@@ -18,6 +18,8 @@ class CreateOrderProductOptionsTable extends Migration
             $table->integer('order_product_id')->unsigned();
             $table->integer('option_id')->unsigned();
             $table->timestamps();
+            $table->foreign('option_id')->references('id')->on('options')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('order_product_id')->references('id')->on('order_products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

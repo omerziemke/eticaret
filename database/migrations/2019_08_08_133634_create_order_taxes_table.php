@@ -18,6 +18,8 @@ class CreateOrderTaxesTable extends Migration
             $table->integer('tax_rate_id')->unsigned();
             $table->decimal('amount', 15, 4)->unsigned();
             $table->timestamps();
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('tax_rate_id')->references('id')->on('tax_rates')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

@@ -18,6 +18,10 @@ class CreateCouponProductsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->boolean('exclude')->default(0);
             $table->timestamps();
+
+
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

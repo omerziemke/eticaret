@@ -17,6 +17,9 @@ class CreateRelatedProductsTable extends Migration
            $table->integer('product_id')->unsigned();
             $table->integer('related_product_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('related_product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

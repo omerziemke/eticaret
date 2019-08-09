@@ -17,7 +17,10 @@ class CreateProductAttributesTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned()->index();
             $table->integer('attribute_id')->unsigned()->index();
-             $table->timestamps();
+            $table->timestamps();
+
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

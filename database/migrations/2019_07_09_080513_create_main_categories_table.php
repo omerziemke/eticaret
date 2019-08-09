@@ -1,11 +1,10 @@
 <?php
 
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateMainCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,16 +13,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('main_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('main_category_id')->unsigned()->nullable();
-            $table->string('category_name');
+            $table->string('main_category_name');
             $table->string('slug')->unique();
             $table->integer('position')->unsigned()->nullable();
-            $table->foreign('main_category_id')->references('id')->on('main_categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
             $table->timestamps();
 
-           
+
+
         });
     }
 
@@ -34,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('main_categories');
     }
 }

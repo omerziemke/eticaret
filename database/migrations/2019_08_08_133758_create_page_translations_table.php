@@ -20,6 +20,8 @@ class CreatePageTranslationsTable extends Migration
             $table->string('name');
             $table->text('body');
             $table->timestamps();
+
+            $table->foreign('page_id')->references('id')->on('pages')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

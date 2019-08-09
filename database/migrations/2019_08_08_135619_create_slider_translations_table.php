@@ -20,6 +20,9 @@ class CreateSliderTranslationsTable extends Migration
             $table->string('locale');
             $table->string('name');
             $table->timestamps();
+
+
+            $table->foreign('slider_id')->references('id')->on('sliders')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

@@ -19,6 +19,8 @@ class CreateTranslationTranslationsTable extends Migration
             $table->string('locale');
             $table->text('value');
             $table->timestamps();
+
+            $table->foreign('translation_id')->references('id')->on('translations')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

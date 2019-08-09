@@ -19,6 +19,8 @@ class CreateOptionValueTranslationsTable extends Migration
             $table->string('locale');
             $table->string('label');
             $table->timestamps();
+
+            $table->foreign('option_value_id')->references('id')->on('option_values')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

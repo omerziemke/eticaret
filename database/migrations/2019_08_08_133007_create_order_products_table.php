@@ -21,6 +21,9 @@ class CreateOrderProductsTable extends Migration
             $table->integer('qty');
             $table->decimal('line_total', 18, 4)->unsigned();
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

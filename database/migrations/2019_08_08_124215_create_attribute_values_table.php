@@ -18,6 +18,8 @@ class CreateAttributeValuesTable extends Migration
             $table->integer('attribute_id')->unsigned()->index();
             $table->integer('position')->unsigned();
             $table->timestamps();
+
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

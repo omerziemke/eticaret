@@ -18,6 +18,9 @@ class CreateCouponCategoriesTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->boolean('exclude')->default(0);
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

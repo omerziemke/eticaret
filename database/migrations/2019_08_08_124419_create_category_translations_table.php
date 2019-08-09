@@ -19,6 +19,8 @@ class CreateCategoryTranslationsTable extends Migration
             $table->string('locale');
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

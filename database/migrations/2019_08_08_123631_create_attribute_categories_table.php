@@ -17,6 +17,9 @@ class CreateAttributeCategoriesTable extends Migration
           $table->integer('attribute_id')->unsigned();
             $table->integer('category_id')->unsigned();
            $table->timestamps();
+
+           $table->foreign('attribute_id')->references('id')->on('attributes')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

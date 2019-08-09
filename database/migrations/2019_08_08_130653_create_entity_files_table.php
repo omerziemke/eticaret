@@ -21,6 +21,8 @@ class CreateEntityFilesTable extends Migration
             $table->string('zone')->index();
             $table->timestamps();
         
+
+        $table->foreign('file_id')->references('id')->on('files')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

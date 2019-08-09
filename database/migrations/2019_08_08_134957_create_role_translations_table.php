@@ -18,6 +18,8 @@ class CreateRoleTranslationsTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->string('locale');
             $table->string('name');
+
+            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

@@ -19,6 +19,8 @@ class CreateAttributeValueTranslationsTable extends Migration
             $table->string('locale', 191);
             $table->string('value', 191);
             $table->unique(['attribute_value_id','locale']);
+
+            $table->foreign('attribute_value_id')->references('id')->on('attribute_values')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

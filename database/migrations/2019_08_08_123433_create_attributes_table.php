@@ -18,6 +18,9 @@ class CreateAttributesTable extends Migration
             $table->integer('attribute_set_id')->unsigned();
             $table->boolean('is_filterable');
             $table->timestamps();
+
+
+            $table->foreign('attribute_set_id')->references('id')->on('attribute_sets')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

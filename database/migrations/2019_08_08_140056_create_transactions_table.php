@@ -20,6 +20,8 @@ class CreateTransactionsTable extends Migration
             $table->string('payment_method');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

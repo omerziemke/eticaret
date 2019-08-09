@@ -17,6 +17,9 @@ class CreateUpSellProductsTable extends Migration
            $table->integer('product_id')->unsigned();
             $table->integer('up_sell_product_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('up_sell_product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

@@ -27,6 +27,11 @@ class CreateMenuItemsTable extends Migration
             $table->boolean('is_fluid');
             $table->boolean('is_active');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('page_id')->references('id')->on('pages')->onUpdate('RESTRICT')->onDelete('CASCADE');
+            $table->foreign('parent_id')->references('id')->on('menu_items')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

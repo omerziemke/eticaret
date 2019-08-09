@@ -21,6 +21,8 @@ class CreateSliderSlidesTable extends Migration
             $table->boolean('open_in_new_window')->nullable();
             $table->integer('position')->nullable();
             $table->timestamps();
+
+            $table->foreign('slider_id')->references('id')->on('sliders')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

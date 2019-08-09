@@ -19,6 +19,8 @@ class CreateTaxClassTranslationsTable extends Migration
             $table->string('locale');
             $table->string('label');
             $table->timestamps();
+
+            $table->foreign('tax_class_id')->references('id')->on('tax_classes')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

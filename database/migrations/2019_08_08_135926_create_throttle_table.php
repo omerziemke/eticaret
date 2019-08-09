@@ -19,6 +19,8 @@ class CreateThrottleTable extends Migration
             $table->string('type');
             $table->string('ip')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 

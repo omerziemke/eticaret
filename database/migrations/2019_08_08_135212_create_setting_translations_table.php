@@ -19,6 +19,8 @@ class CreateSettingTranslationsTable extends Migration
             $table->string('locale');
             $table->string('value')->nullable();
             $table->timestamps();
+
+            $table->foreign('setting_id')->references('id')->on('settings')->onUpdate('RESTRICT')->onDelete('CASCADE');
         });
     }
 
