@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Urun;
 use App\Models\UrunDetay;
+use App\Models\ProductTranslation;
 class UrunTableSeeder extends Seeder
 {
     /**
@@ -12,40 +13,31 @@ class UrunTableSeeder extends Seeder
      */
     public function run(Faker\Generator $faker)
     {
- DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Urun::truncate();
-        UrunDetay::truncate();
+         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+         Urun::truncate();
+         ProductTranslation::truncate();
+          DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+    
         for($i=0 ; $i<30 ; $i++)
         {
             $urun_adi=$faker->sentence(2);
             $urun=Urun::create([
-            'urun_adi'=>$urun_adi,
+            'price'=>$faker->randomFloat(3,1,20),
             'slug'=>str_slug($urun_adi),
-            'aciklama'=>$faker->sentence(20),
-            'fiyati'=>$faker->randomFloat(3,1,20),
-            'indirimli_fiyati'=>$faker->randomFloat(3,1,20),
-            'yildiz_sayisi'=>rand(0,5)
+            'manage_stock'=>rand(0,1),
+            'in_stock'=>rand(0,1),
+            'is_active'=>rand(0,1)
             ]);
-
-            $detay=$urun->detay()->create([
-             
-            
-             'yeni_sezon'=>rand(0,1),
-             'trendler'=>rand(0,1),
-             'yaz_ayakkabilari'=>rand(0,1),
-             'cok_satan'=>rand(0,1),
-             'futbol'=>rand(0,1),
-             'basketbol'=>rand(0,1),
-             'anneler_günü'=>rand(0,1),
-             'kadin'=>rand(0,1),
-             'cocuk'=>rand(0,1),
-             'yeni'=>rand(0,1),
-             'urun_resmi'=>rand(0,1),
-      
-
-
+          
+            $product_translation=ProductTranslation::create([
+             'name'=>$urun_adi,
+             'product_id'=>$urun->id,
+             'locale'=>$faker->sentence(5),
+             'description'=>$faker->sentence(20)
             ]);
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+           
+           
         }
+       
     }
 }

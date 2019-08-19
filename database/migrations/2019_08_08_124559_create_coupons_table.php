@@ -18,7 +18,7 @@ class CreateCouponsTable extends Migration
             $table->string('code')->index();
             $table->decimal('value', 18, 4)->unsigned()->nullable();
             $table->boolean('is_percent');
-            $table->boolean('free_shipping');
+            $table->boolean('free_shipping')->default(0);
             $table->decimal('minimum_spend', 18, 4)->unsigned()->nullable();
             $table->decimal('maximum_spend', 18, 4)->unsigned()->nullable();
             $table->integer('usage_limit_per_coupon')->unsigned()->nullable();

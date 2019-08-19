@@ -13,9 +13,7 @@ class Sepet_Urun extends Model
     protected $guarded=[];
 
 
-    const CREATED_AT = 'olusturulma_tarihi';
-    const UPDATED_AT ='güncelleme_tarihi';
-    const DELETED_AT ='silinme_tarihi';
+
 
      
 

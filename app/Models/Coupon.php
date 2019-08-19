@@ -3,17 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Kategori extends Model
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Coupon extends Model
 {
      use SoftDeletes;																																																																						
 
-    protected $table='categories';
-    protected $fillable=['category_name','slug'];
+    protected $table='coupons';
+    protected $guarded=[];
 
 
     
-
-   
-
 }

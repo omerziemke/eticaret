@@ -9,6 +9,12 @@ class Urun extends Model
      use SoftDeletes;
     protected $table='products';
     protected $guarded=[];
+    
 
+
+     public function product_translations()
+    {  
+    	return $this->hasOne('App\Models\ProductTranslation');
+    }
 
 }

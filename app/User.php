@@ -15,9 +15,6 @@ class User extends Authenticatable
     
 
 
-    const CREATED_AT = 'olusturulma_tarihi';
-    const UPDATED_AT ='güncelleme_tarihi';
-    const DELETED_AT ='silinme_tarihi';
 
 
     protected $fillable = [

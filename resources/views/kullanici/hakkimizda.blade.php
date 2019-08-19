@@ -1,6 +1,6 @@
 @extends('kullanici.template')
 
-@section('title','Anasayfa')
+@section('title','Hakkımızda')
 
 @section('content')
     <div class="header-services">
