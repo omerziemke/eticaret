@@ -25,12 +25,13 @@ class KullaniciController extends Controller
     }
 
     public function kaydol(){ 
+
         $this->validate(request(),[
                'first_name'=>'required|min:5|max:60',
                'email'=>'required|email|unique:users'
-               
+       
             ]);
-
+            
     $users=User::create([
              'first_name'=>request('first_name'),
              'last_name'=>request('last_name'),

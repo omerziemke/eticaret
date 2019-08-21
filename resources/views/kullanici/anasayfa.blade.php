@@ -4,7 +4,7 @@
 
 @section('content')
 
-
+   @include('kullanici.partials.alert')
      <main class="ps-main">
     
       <div class="ps-banner">

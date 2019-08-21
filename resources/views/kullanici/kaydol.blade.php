@@ -50,9 +50,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="sifre-tekrari" class="col-md-4 control-label">Şifre (Tekrar)</label>
+                                <label for="password-confirmation" class="col-md-4 control-label">Şifre (Tekrar)</label>
                                 <div class="col-md-6">
-                                    <input id="sifre-tekrari" type="password" class="form-control" name="sifre-confirmation" required>
+                                    <input id="password-confirmation" type="password" class="form-control" name="password-confirmation" required>
                                 </div>
                             </div>
 

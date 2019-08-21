@@ -35,11 +35,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-     public function getAuthPassword()
-    {
-        return $this->sifre;
-        
-    }
+    
 
       /*public function detay()
      {

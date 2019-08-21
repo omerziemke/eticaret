@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('sku')->nullable();
             $table->boolean('manage_stock');
             $table->integer('qty')->nullable();
+            $table->boolean('taste')->nullable();
             $table->boolean('in_stock');
             $table->integer('viewed')->unsigned()->default(0);
             $table->boolean('is_active');

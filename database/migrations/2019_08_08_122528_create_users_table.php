@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('aktivasyon_anahtari');
+            $table->string('aktivasyon_anahtari')->nullable();
             $table->boolean('aktif_mi');
             $table->text('permissions')->nullable();
             $table->dateTime('last_login')->nullable();
