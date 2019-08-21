@@ -25,10 +25,10 @@
           		@foreach($urunler as $urun)
           		<div class="col-md-3 product">
           			<a href="{{route('kullanici.urundetay',$urun->id)}}"><img src="http://via.placeholder.com/400x400?text=UrunResmi" alt="{{$urun->urun_adi}}"></a>
-          			<p><a href="{{route('kullanici.urundetay',$urun->id)}}"></a>{{$urun->urun_adi}}</p>
-          			<p class="price">{{$urun->fiyati}}  ₺</p>
+          			<p><a href="{{route('kullanici.urundetay',$urun->id)}}"></a></p>
+          			<p class="price">{{$urun->price}}  ₺</p>
           		</div>
-                  
+                  @dd($urun)
 
           		@endforeach
           	</div>

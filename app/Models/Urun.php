@@ -14,7 +14,7 @@ class Urun extends Model
 
      public function product_translations()
     {  
-    	return $this->hasOne('App\Models\ProductTranslation');
+    	return $this->hasOne('App\Models\ProductTranslation', 'product_id', 'id');
     }
 
 }

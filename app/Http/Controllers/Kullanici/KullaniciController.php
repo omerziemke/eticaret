@@ -26,17 +26,19 @@ class KullaniciController extends Controller
 
     public function kaydol(){ 
         $this->validate(request(),[
-               'adsoyad'=>'required|min:5|max:60',
+               'first_name'=>'required|min:5|max:60',
                'email'=>'required|email|unique:users'
                
             ]);
 
     $users=User::create([
-               'adsoyad'=>request('adsoyad'),
+             'first_name'=>request('first_name'),
+             'last_name'=>request('last_name'),
 	           'email'=>request('email'),
-	           'sifre'=>Hash::make(request('sifre')),
+	           'password'=>Hash::make(request('password')),
 	           'aktivasyon_anahtari'=>Str::random(60),
-	           'aktif_mi'=>0
+	           'aktif_mi'=>0,
+             'permissions'=>0
 	             ]);
     Mail::to(request('email'))->send(new KullaniciKayitMail($users)); //mailin kime gidecegi, from() ise kimin gönderecegi
     auth()->login($users);
@@ -72,15 +74,15 @@ class KullaniciController extends Controller
 
           $this->validate(request(),[
                 'email'=>'required|email',
-                'sifre'=>'required'
+                'password'=>'required'
           ]);
              $credentials=[
               'email'=>request('email'),
-              'password'=>request('sifre')
+              'password'=>request('password')
              
              ];
                
-            if(auth()->attempt($credentials, request()->has('benihatirla')))
+            if(auth()->attempt($credentials))
             {
                 
                   return  redirect()->intended('/');//giriş yapmadan herhangi bir sayfaya gitmek isterse dogrudan oturum ac sayfasına yonlendiriyor giriş yapıncada istedigisayfaya otamatik gidiyor (intended )ile

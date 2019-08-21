@@ -21,9 +21,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="sifre" class="col-md-4 control-label">Şifre</label>
+                                <label for="password" class="col-md-4 control-label">Şifre</label>
                                 <div class="col-md-6">
-                                    <input id="sifre" type="password" class="form-control" name="sifre" required>
+                                    <input id="password" type="password" class="form-control" name="password" required>
                                 </div>
                             </div>
 

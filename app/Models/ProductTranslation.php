@@ -14,7 +14,7 @@ class ProductTranslation extends Model
 
 public function urun()
     {  
-    	return $this->belongsTo('App\Models\Urun');
+    	return $this->belongsTo(Urun::class,'product_id', 'id');
     }
 
 }

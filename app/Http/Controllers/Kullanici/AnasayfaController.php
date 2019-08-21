@@ -11,8 +11,8 @@ class AnasayfaController extends Controller
 
 
     public function index(){
-         $urunler=UrunDetay::all();
-    	return view('kullanici.yenisezon');
+         $urunler=Urun::all();
+    	return view('kullanici.yenisezon',compact('urunler'));
     }
 
 

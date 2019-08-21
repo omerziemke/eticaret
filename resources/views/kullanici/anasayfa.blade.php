@@ -71,10 +71,10 @@
                         <div class="ps-shoe__variants">
                           <div class="ps-shoe__variant normal"><img src="images/shoe/2.jpg" alt=""><img src="images/shoe/3.jpg" alt=""><img src="images/shoe/4.jpg" alt=""><img src="images/shoe/5.jpg" alt=""></div>
                           <select class="ps-rating ps-shoe__rating">
-                            <option value="{{$urun->id}}">{{$urun->name}}</option>
+                            <option value="{{$urun->id}}">{{$urun->product_translations->name}}</option>
                           </select>
                         </div>
-                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{$urun->name}}</a>
+                        <div class="ps-shoe__detail"><a class="ps-shoe__name" href="#">{{$urun->product_translations->name}}</a>
                           <p class="ps-shoe__categories"><a href="#">Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p><span class="ps-shoe__price">
                             <del>£200</del> £ {{$urun->price}}</span>
                         </div>

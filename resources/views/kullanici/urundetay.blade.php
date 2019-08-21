@@ -52,9 +52,10 @@
 
                 <h1>Air strong  training</h1>
                 <p class="ps-product__category"><a href="#"> Men shoes</a>,<a href="#"> Nike</a>,<a href="#"> Jordan</a></p>
-                <h3 class="ps-product__price">£ {{$urundetay->indirimli_fiyati}} <del>£ {{$urundetay->fiyati}}</del></h3>
+                <h3 class="ps-product__price">£ {{$urundetay->special_price}} <del>£ {{$urundetay->price}}</del></h3>
                 <div class="ps-product__block ps-product__quickview">
-                  <h4>QUICK REVIEW</h4>
+                  
+                  <h4>{{$urundetay->product_translations->name}}</h4>
                   <p>The Nike Free RN 2017 Men's Running Sky weighs less than previous versions and features an updated knit material…</p>
                 </div>
                 <div class="ps-product__block ps-product__style">

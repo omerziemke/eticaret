@@ -20,6 +20,7 @@ class CreateProductTranslationsTable extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->text('short_description')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('CASCADE');

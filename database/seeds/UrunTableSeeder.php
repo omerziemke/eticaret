@@ -29,12 +29,12 @@ class UrunTableSeeder extends Seeder
             'is_active'=>rand(0,1)
             ]);
           
-            $product_translation=ProductTranslation::create([
+            $product_translation = new ProductTranslation([
              'name'=>$urun_adi,
-             'product_id'=>$urun->id,
              'locale'=>$faker->sentence(5),
              'description'=>$faker->sentence(20)
             ]);
+            $product_translation->urun()->associate($urun)->save();
            
            
         }

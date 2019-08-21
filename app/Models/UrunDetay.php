@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UrunDetay extends Model
 {
-     protected $table='urun_detays';
+    protected $table='urun_detays';
     protected $guarded=[];
     public $timestamps=false;
 

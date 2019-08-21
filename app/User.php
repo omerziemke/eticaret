@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
-    use SoftDeletes;
+  
 
     protected $table="users";
     
@@ -18,7 +18,7 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'adsoyad', 'email', 'sifre','aktivasyon_anahtari','aktif_mi'
+        'first_name','last_name','email','permissions','password','last_login','aktif_mi','aktivasyon_anahtari'
     ];
 
     /**
@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'sifre', 'aktivasyon_anahtari',
+        'password', 'aktivasyon_anahtari',
     ];
 
     /**

@@ -15,12 +15,12 @@ class SepetController extends Controller
     	return view("kullanici.sepet");
     }
 
-     public function ekle($id){
+     public function ekle(int $id){
         
-        $urun=Urun::find($id);
-        $bul=ProductTranslation::where('pruduct_id',$id);
-        dd($bul);
-        $cartItem=Cart::add($urun->id,$bul->name,1,$urun->price);
+        $urun=Urun::where('id',$id)->first();
+   
+        
+        $cartItem=Cart::add($urun->id,$urun->product_translations->name,1,$urun->price);
           
         
     	return redirect()->route('kullanici.sepet')

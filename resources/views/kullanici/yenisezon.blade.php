@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="ps-product__columns">
-            @foreach
+           
             <div class="ps-product__column">
               <div class="ps-shoe mb-30">
                 <div class="ps-shoe__thumbnail">
@@ -63,6 +63,7 @@
                 </div>
               </div>
             </div>
+         
           </div>
           <div class="ps-product-action">
             <div class="ps-product__filter">

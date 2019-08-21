@@ -30,12 +30,12 @@ Route::get('odeme/yap','Kullanici\OdemeController@odeme')->name('odeme.yap');
 
 Route::group(['prefix'=>'kullanici'],function(){
     Route::get('/oturumac','Kullanici\KullaniciController@giris_form')->name('kullanici.oturumac');
-    Route::post('/oturumac','Kullanici\KullaniciController@giris')->name('kullanici.oturumac');
-	Route::get('/kaydol','Kullanici\KullaniciController@kaydol_form')->name('kullanici.kaydol');
+    Route::post('/oturumac','Kullanici\KullaniciController@giris');
+	  Route::get('/kaydol','Kullanici\KullaniciController@kaydol_form')->name('kullanici.kaydol');
     Route::post('/kaydol','Kullanici\KullaniciController@kaydol');
     Route::post('/giris','Kullanici\KullaniciController@giris')->name('kullanici.giris');
     Route::get('/cikis','Kullanici\KullaniciController@cikis')->name('kullanici.cikis');
-     Route::get('/aktiflestir/{anahtar}','Kullanici\KullaniciController@aktiflestir')->name('aktiflestir');
+    Route::get('/aktiflestir/{anahtar}','Kullanici\KullaniciController@aktiflestir')->name('aktiflestir');
 });
 	
  Route::group(['prefix'=>'sepet'],function(){
